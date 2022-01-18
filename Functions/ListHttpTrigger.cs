@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -17,7 +18,14 @@ namespace UserCRUD.Function
         {
             _service = service;
         }
-
+        [FunctionName("list-dummy")]
+        public async Task<IActionResult> RunDummy(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "list-dummy")] HttpRequest req, 
+            ILogger log)
+        {
+            var user = new List<User>(){new User(){Name="Madan",Password="Test@123"}};
+            return new OkObjectResult(user);
+        }
         [FunctionName("list")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "list")] HttpRequest req, 

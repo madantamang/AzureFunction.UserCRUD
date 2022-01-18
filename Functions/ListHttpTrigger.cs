@@ -22,7 +22,7 @@ namespace UserCRUD.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "list-dummy")] HttpRequest req, 
             ILogger log)
         {
-            var user = new List<User>(){new User(){Name="Madan",Password="Test@123"};};
+            var user = new List<User>(){new User(){Name="Madan",Password="Test@123"}};
             return new OkObjectResult(user);
         }
         [FunctionName("list")]

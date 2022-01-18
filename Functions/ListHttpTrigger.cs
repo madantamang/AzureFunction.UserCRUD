@@ -18,7 +18,7 @@ namespace UserCRUD.Function
             _service = service;
         }
         [FunctionName("list-dummy")]
-        public async Task<IActionResult> Run(
+        public async Task<IActionResult> RunDummy(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "list-dummy")] HttpRequest req, 
             ILogger log)
         {
